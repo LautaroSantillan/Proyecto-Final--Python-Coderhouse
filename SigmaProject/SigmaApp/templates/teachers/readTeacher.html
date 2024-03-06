@@ -1,0 +1,18 @@
+{% extends "father.html" %}
+
+{% block forms %}
+    <br>
+    <hr>
+    <h2>Formulario para ver profesores:</h2>
+    <form action="/SigmaApp/readTeachers/" method="GET">
+        <p>
+            <input type="text" name="name" id="name">
+            <input type="submit" name="searching">
+        </p>
+    </form>
+    <p>{{message}}</p>
+{% for teacher in teachers %}
+    <p>{{teacher}}</p>
+{% endfor %}
+
+{% endblock %}

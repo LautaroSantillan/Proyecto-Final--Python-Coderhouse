@@ -1,0 +1,11 @@
+{% extends "father.html" %}
+
+{% block forms %}
+    <br>
+    <hr>
+    <h2>Formulario para crear clientes:</h2>
+    <form action="" method="post"> {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}
