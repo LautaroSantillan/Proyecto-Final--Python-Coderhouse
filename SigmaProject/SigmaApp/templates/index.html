@@ -15,13 +15,12 @@
                                 <h6 data-aos="fade-up" data-aos-delay="300">Una nueva forma de construir un estilo de vida saludable!</h6>
                                 <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Mejora tu cuerpo en Sigma Fitness Gym</h1>
                                 <a href="#location" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Ubicación</a>
-                                <a href="#about" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">Leer más</a>    
+                                <a href="{% url 'Read Teacher' %}" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">Leer más</a>    
                         </div>
                     </div>
                 </div>
         </div>
     </section>
-
     <section class="feature" id="feature">
     <div class="container">
         <div class="row">
@@ -47,4 +46,24 @@
         </div>
     </div>
     </section>
+{% endblock %}
+
+{% block maps %}
+    <section class="contact section" id="location">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
+                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Donde puedes <span>encontrarnos</span></h2>
+                    {% for p in place %}
+                    <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i>
+                        {{ p }}                     
+                    </p>
+                    {% endfor %}  
+                    <div class="google-map" data-aos="fade-up" data-aos-delay="900">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13131.244627681659!2d-58.5480883!3d-34.6342122!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc805e5d9ba13%3A0xc6563e2dcf869b0e!2sSigma%20Fitness%20Gym!5e0!3m2!1ses!2sar!4v1710124795440!5m2!1ses!2sar" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
 {% endblock %}

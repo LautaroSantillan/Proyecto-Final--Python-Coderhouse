@@ -3,7 +3,8 @@ from SigmaApp.models import *
 from SigmaApp.forms import *
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    place = Place.objects.all()
+    return render(request, "index.html", {"place": place})
 
 #CRUD Teacher
 def create_teacher(request):
@@ -25,14 +26,9 @@ def create_teacher(request):
     return render(request, "teachers/createTeacher.html", {"form": forms})
 
 def read_teacher(request):
-    if request.GET: 
-        name = request.GET["name"] 
-        teachers = Teacher.objects.filter(name__icontains=name)
-        message = f"Estamos buscando al profesor {name}..."
-        return render(request, "teachers/readTeacher.html", {"teachers": teachers, "message": message})
+    teachers = Teacher.objects.all()
+    return render(request, "teachers/readTeacher.html", {"teachers": teachers})
     
-    return render(request, "teachers/readTeacher.html")
-
 #CRUD Client
 def create_client(request):
     if request.method == "POST": #Cuando apreto el btn submit
@@ -51,6 +47,15 @@ def create_client(request):
         forms= ClientForm()
     
     return render(request, "clients/createClient.html", {"form": forms})
+
+def read_client(request):
+    if request.GET: 
+        name = request.GET["name"] 
+        clients = Client.objects.filter(name__icontains=name)
+        message = f"Estamos buscando al cliente {name}..."
+        #return render(request, "teachers/readTeacher.html", {"clients": clients, "message": message})
+    
+    #return render(request, "teachers/readTeacher.html")
 
 #CRUD Activity
 def create_activity(request):

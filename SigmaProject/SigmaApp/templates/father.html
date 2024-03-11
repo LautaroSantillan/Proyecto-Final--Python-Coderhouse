@@ -2,73 +2,62 @@
 <html lang="en">
 <head>
     {% load static %}
-     <title>Sigma Fitness Gym</title>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-     <meta name="description" content="">
-     <meta name="keywords" content="">
-     <meta name="author" content="Lautaro Santillan">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
-
-     <!-- MAIN CSS -->
-     <link rel="stylesheet" href="{% static 'css/tooplate-gymso-style.css' %}">
-
-     <style>
+    <title>Sigma Fitness Gym</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Lautaro Santillan">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- LINK -->
+    <link rel="icon" sizes="16x16" href="{% static 'images/logo.jpg' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'css/tooplate-gymso-style.css' %}">
+    <!-- STYLES -->
+    <style>
         :root {
             --primary-color: #2eff00;
         }
     </style>
 </head>
 <body data-spy="scroll" data-target="#navbarNav" data-offset="50">
-
     <!-- MENU BAR -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{% url 'Home' %}">
                 {% block title %}
                 {% endblock %}
             </a>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-lg-auto">
                     <li class="nav-item">
-                        <a href="#home" class="nav-link smoothScroll">Home</a>
+                        <a href="{% url 'Home' %}" class="nav-link smoothScroll">Home</a>
                     </li>
-
                     <li class="nav-item">
-                        <a href="#about" class="nav-link smoothScroll">About Us</a>
+                        <a href="{% url 'Read Teacher' %}" class="nav-link smoothScroll">About Us</a>
                     </li>
-
                     <li class="nav-item">
                         <a href="#class" class="nav-link smoothScroll">Classes</a>
                     </li>
-
                     <li class="nav-item">
                         <a href="#schedule" class="nav-link smoothScroll">Schedules</a>
                     </li>
-
                     <li class="nav-item">
-                        <a href="#contact" class="nav-link smoothScroll">Contact</a>
+                        <a href="#" class="nav-link smoothScroll">About me</a>
                     </li>
                 </ul>
-
                 <ul class="social-icon ml-lg-3">
-                    <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="https://www.facebook.com/gimnasio.sigmafitnessgym/?ref=page_internal" class="fa fa-facebook" target="_blank"></a></li>
+                    <li><a href="https://www.instagram.com/sigmafitnessgym/" class="fa fa-instagram" target="_blank"></a></li>
                 </ul>
             </div>
-
         </div>
     </nav>
 
@@ -77,58 +66,6 @@
 
     {% block forms %}
     {% endblock %}
-
-     <!-- ABOUT -->
-     {% comment %} <section class="about section" id="about">
-               <div class="container">
-                    <div class="row">
-
-                            <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
-                                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hello, we are Gymso</h2>
-
-                                <p data-aos="fade-up" data-aos-delay="400">You are NOT allowed to redistribute this HTML template downloadable ZIP file on any template collection site. You are allowed to use this template for your personal or business websites.</p>
-
-                                <p data-aos="fade-up" data-aos-delay="500">If you have any question regarding <a rel="nofollow" href="https://www.tooplate.com/view/2119-gymso-fitness" target="_parent">Gymso Fitness HTML template</a>, you can <a rel="nofollow" href="https://www.tooplate.com/contact" target="_parent">contact Tooplate</a> immediately. Thank you.</p>
-
-                            </div>
-
-                            <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
-                                <div class="team-thumb">
-                                    <img src="images/team/team-image.jpg" class="img-fluid" alt="Trainer">
-
-                                    <div class="team-info d-flex flex-column">
-
-                                        <h3>Mary Yan</h3>
-                                        <span>Yoga Instructor</span>
-
-                                        <ul class="social-icon mt-3">
-                                            <li><a href="#" class="fa fa-twitter"></a></li>
-                                            <li><a href="#" class="fa fa-instagram"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
-                                <div class="team-thumb">
-                                    <img src="images/team/team-image01.jpg" class="img-fluid" alt="Trainer">
-
-                                    <div class="team-info d-flex flex-column">
-
-                                        <h3>Catherina</h3>
-                                        <span>Body trainer</span>
-
-                                        <ul class="social-icon mt-3">
-                                            <li><a href="#" class="fa fa-instagram"></a></li>
-                                            <li><a href="#" class="fa fa-facebook"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                    </div>
-               </div>
-     </section> {% endcomment %}
 
      <!-- CLASS -->
      {% comment %} <section class="class section" id="class">
@@ -302,65 +239,31 @@
                </div>
      </section> {% endcomment %}
 
-     <!-- CONTACT -->
-     {% comment %} <section class="contact section" id="contact">
-          <div class="container">
-               <div class="row">
+    {% block maps %}
+    {% endblock %}
 
-                    <div class="ml-auto col-lg-5 col-md-6 col-12">
-                        <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
-
-                        <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
-                            <input type="text" class="form-control" name="cf-name" placeholder="Name">
-
-                            <input type="email" class="form-control" name="cf-email" placeholder="Email">
-
-                            <textarea class="form-control" rows="5" name="cf-message" placeholder="Message"></textarea>
-
-                            <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
-                        </form>
-                    </div>
-
-                    <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
-                        <h2 class="mb-4" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
-                        <p data-aos="fade-up" data-aos-delay="800"><i class="fa fa-map-marker mr-1"></i> 120-240 Rio de Janeiro - State of Rio de Janeiro, Brazil</p>
-                        <div class="google-map" data-aos="fade-up" data-aos-delay="900">
-                           <iframe src="https://maps.google.com/maps?q=Av.+Lúcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                        </div>
-                    </div>
-                    
-               </div>
-          </div>
-     </section> {% endcomment %}
-
-     <!-- FOOTER -->
-     <footer class="site-footer">
-          <div class="container">
-               <div class="row">
-
-                    <div class="ml-auto col-lg-4 col-md-5">
-                        <p class="copyright-text">Copyright &copy; 2024 Sigma Fitness Co.
-                    </div>
-
-                    <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
-                        <p class="mr-4">
-                            <i class="fa fa-envelope-o mr-1"></i>
-                            <a href="#">hello@company.co</a>
-                        </p>
-
-                        <p><i class="fa fa-phone mr-1"></i> 010-020-0840</p>
-                    </div>
-                    
-               </div>
-          </div>
-     </footer>
-
-     <!-- SCRIPTS -->
-     <script src="{% static 'js/jquery.min.js' %}"></script>
-     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-     <script src="{% static 'js/aos.js' %}"></script>
-     <script src="{% static 'js/smoothscroll.js' %}"></script>
-     <script src="{% static 'js/custom.js' %}"></script>
-
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="ml-auto col-lg-4 col-md-5">
+                    <p class="copyright-text">Copyright &copy; 2024 Sigma Fitness Co.
+                </div>
+                <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
+                    <p class="mr-4">
+                        <i class="fa fa-envelope-o mr-1"></i>
+                        <a href="mailto:sigmafitnessgym@gmail.com">sigmafitnessgym@gmail.com</a>
+                    </p>
+                    <p><i class="fa fa-phone mr-1"></i>01140871139</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/smoothscroll.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
 </body>
 </html>
