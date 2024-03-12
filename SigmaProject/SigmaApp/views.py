@@ -6,6 +6,9 @@ def index(request):
     place = Place.objects.all()
     return render(request, "index.html", {"place": place})
 
+def aboutMe(request):
+    return render(request, "aboutMe.html")
+
 #CRUD Teacher
 def create_teacher(request):
     if request.method == "POST": #Cuando apreto el btn submit

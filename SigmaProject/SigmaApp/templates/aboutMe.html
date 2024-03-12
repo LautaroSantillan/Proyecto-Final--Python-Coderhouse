@@ -1,0 +1,29 @@
+{% extends "father.html" %}
+
+{% block section %}
+    {% load static %}
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
+                    <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Hola! Me presento:</h2>
+                    <p data-aos="fade-up" data-aos-delay="400">Soy un desarrollador frontend con experiencia en crear, codificar y realizar interfaces de landing pages. Tengo experiencia desarrollando diferentes sistemas back-end y APIs RESTful.</p>
+                    <p data-aos="fade-up" data-aos-delay="500">Soy una persona apasionada en la creación, adaptación e implementación de sitios web. Tanto en la parte del front-end como en la parte del back-end.</p>
+                </div>
+                <div class="ml-lg-auto col-lg-3 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+                    <div class="team-thumb">
+                        <img src="{% static 'images/lautaro-img.jpg' %}" class="img-fluid" alt="Developer">
+                            <div class="team-info d-flex flex-column">
+                                <h3>Lautaro<br>Santillan</h3>
+                                <span>Programador Jr</span>
+                                <ul class="social-icon mt-3">
+                                    <li><a href="https://www.instagram.com/lautaroo.santillan/" class="fa fa-instagram" target="_blank"></a></li>
+                                    <li><a href="https://www.linkedin.com/in/lautaro-ezequiel-santillan-65973b205/" class="fa fa-linkedin" target="_blank"></a></li>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
