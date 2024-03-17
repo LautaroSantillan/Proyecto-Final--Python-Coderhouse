@@ -3,9 +3,20 @@
 {% block forms %}
     <br>
     <hr>
-    <h2>Formulario para crear actividades:</h2>
-    <form action="" method="post"> {% csrf_token %}
-        {{form}}
-        <input type="submit" value="Save">
-    </form>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="fw-normal text-center mb-4">Formulario para crear actividades:</h2>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <button type="submit" class="btn btn-primary d-block mx-auto">Crear Actividades</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
 {% endblock %}

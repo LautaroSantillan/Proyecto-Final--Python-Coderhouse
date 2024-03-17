@@ -4,6 +4,9 @@ from SigmaApp.forms import *
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def index(request):
     place = Place.objects.all()
@@ -20,7 +23,7 @@ def register_user(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save() # Crear nuevo usuario
+            form.save()
             return render(request, "index.html", {"message": "El usuario ha sido creado exitosamente!"})
     else:
         form = UserCreationForm()
@@ -29,11 +32,11 @@ def register_user(request):
 
 def login_user(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, data = request.POST) # Almacenar la información
+        form = AuthenticationForm(request, data = request.POST)
         if form.is_valid():
             infoDic = form.cleaned_data
             user = authenticate(username = infoDic["username"], password = infoDic["password"])
-            if user is not None: # Que el usuario existe!
+            if user is not None:
                 login(request, user)
                 return render(request, "index.html", {"message": f"Bienvenido {user}!"})
         else:
@@ -48,8 +51,9 @@ def logout_user(request):
     return render(request, "index.html", {"message": "Has cerrado la sesión!"})
 
 #CRUD Teacher
+@login_required
 def create_teacher(request):
-    if request.method == "POST": #Cuando apreto el btn submit
+    if request.method == "POST":
         forms = TeacherForm(request.POST)
         if forms.is_valid():
             infoDic = forms.cleaned_data
@@ -72,7 +76,7 @@ def read_teacher(request):
     
 #CRUD Client
 def create_client(request):
-    if request.method == "POST": #Cuando apreto el btn submit
+    if request.method == "POST":
         forms = ClientForm(request.POST)
         if forms.is_valid():
             infoDic = forms.cleaned_data
@@ -90,17 +94,42 @@ def create_client(request):
     return render(request, "clients/createClient.html", {"form": forms})
 
 def read_client(request):
-    if request.GET: 
-        name = request.GET["name"] 
-        clients = Client.objects.filter(name__icontains=name)
-        message = f"Estamos buscando al cliente {name}..."
-        #return render(request, "teachers/readTeacher.html", {"clients": clients, "message": message})
-    
-    #return render(request, "teachers/readTeacher.html")
+    clients = Client.objects.all()
+    return render(request, "clients/readClient.html", {"clients": clients})
+
+@login_required
+def update_client(request, infoClient):
+    client = Client.objects.get(id=infoClient)
+    if request.method == "POST":
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            infoDic = form.cleaned_data
+            client.name = infoDic["name"]
+            client.lastname = infoDic["lastname"]
+            client.email = infoDic["email"]
+            client.age = infoDic["age"]
+            client.save()
+            return render(request, "index.html")
+    else:
+        form = ClientForm(initial={
+            "name": client.name,
+            "lastname": client.lastname,
+            "email": client.email,
+            "age": client.age,
+        })
+
+    return render(request, "clients/updateClient.html", {"form": form})
+
+@login_required
+def delete_client(request, infoClient):
+    client = Client.objects.get(id=infoClient)
+    client.delete()
+    return render(request, "index.html")
 
 #CRUD Activity
+@login_required
 def create_activity(request):
-    if request.method == "POST": #Cuando apreto el btn submit
+    if request.method == "POST":
         forms = ActivityForm(request.POST)
         if forms.is_valid():
             infoDic = forms.cleaned_data
@@ -117,8 +146,9 @@ def create_activity(request):
     return render(request, "activities/createActivity.html", {"form": forms})
 
 #CRUD Place
+@login_required
 def create_place(request):
-    if request.method == "POST": #Cuando apreto el btn submit
+    if request.method == "POST":
         forms = PlaceForm(request.POST)
         if forms.is_valid():
             infoDic = forms.cleaned_data

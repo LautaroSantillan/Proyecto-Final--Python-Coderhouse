@@ -1,0 +1,23 @@
+{% extends "father.html" %}
+
+{% block section %}
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
+                    <h2 class="mb-4">Clientes Registrados:</h2>
+                    <ol>
+                        {% for client in clients %}
+                        <li>Nombre: {{client}} - Edad: {{client.age}}</li> 
+                            {% if user.is_authenticated %}
+                                <a class="btn btn-dark" href="{% url 'Update Client' client.id %}">Actualizar Cliente</a>
+                                <a class="btn btn-danger" href="{% url 'Delete Client' client.id %}">Eliminar Cliente</a>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                    <a class="btn btn-primary" href="{% url 'Create Client' %}">Crear Clientes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

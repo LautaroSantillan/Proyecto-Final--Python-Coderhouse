@@ -1,8 +1,23 @@
 {% extends "father.html" %}
 
 {% block forms %}
-    <form action="" method="POST" style="margin-top: 6rem; margin-left: 1rem;"> {% csrf_token %}
-        {{form}}
-        <button type="submit">Iniciar Sesión</button>
-    </form>
+    <br>
+    <br>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="fw-normal text-center mb-4">SIGN IN</h2>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <button type="submit" class="btn btn-primary d-block mx-auto">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 {% endblock %}

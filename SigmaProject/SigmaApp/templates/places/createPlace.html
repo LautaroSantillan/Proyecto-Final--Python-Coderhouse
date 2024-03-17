@@ -2,10 +2,21 @@
 
 {% block forms %}
     <br>
-    <hr>
-    <h2>Formulario para crear el lugar del gimnasio:</h2>
-    <form action="" method="post"> {% csrf_token %}
-        {{form}}
-        <input type="submit" value="Save">
-    </form>
+    <br>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="fw-normal text-center mb-4">Formulario para crear el lugar del gimnasio:</h2>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <button type="submit" class="btn btn-primary d-block mx-auto">Crear Lugar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
 {% endblock %}
