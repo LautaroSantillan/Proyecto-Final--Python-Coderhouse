@@ -1,10 +1,16 @@
 from django.urls import path
 from SigmaApp.views import *
+from . import views
+from django.conf.urls import handler404
+
+# Manejador para la página de error 404
+handler404 = views.error_404
 
 urlpatterns = [
     path('index/', index, name="Home"),
     # Pages
     path('aboutMe/', aboutMe, name="About Me"),
+    path('404/', views.error_404, name='error_404'),
     # User Autenticado
     path('signup/', register_user, name="Registrarse"),
     path("login/", login_user, name="Iniciar Sesion"),

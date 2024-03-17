@@ -12,6 +12,9 @@ def index(request):
 def aboutMe(request):
     return render(request, "aboutMe.html")
 
+def error_404(request, exception):
+    return render(request, 'error404.html', status=404)
+
 # User Autenticado
 def register_user(request):
     if request.method == "POST":
