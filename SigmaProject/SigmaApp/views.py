@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from SigmaApp.models import *
 from SigmaApp.forms import *
+
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def index(request):
     place = Place.objects.all()
@@ -8,6 +11,38 @@ def index(request):
 
 def aboutMe(request):
     return render(request, "aboutMe.html")
+
+# User Autenticado
+def register_user(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save() # Crear nuevo usuario
+            return render(request, "index.html", {"message": "El usuario ha sido creado exitosamente!"})
+    else:
+        form = UserCreationForm()
+
+    return render(request, "account-signin/register.html", {"form": form})
+
+def login_user(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data = request.POST) # Almacenar la información
+        if form.is_valid():
+            infoDic = form.cleaned_data
+            user = authenticate(username = infoDic["username"], password = infoDic["password"])
+            if user is not None: # Que el usuario existe!
+                login(request, user)
+                return render(request, "index.html", {"message": f"Bienvenido {user}!"})
+        else:
+            return render(request, "index.html", {"message": "Credenciales incorrectas"})
+    else:
+        form = AuthenticationForm()
+
+    return render(request, "account-signin/login.html", {"form": form})
+
+def logout_user(request):
+    logout(request)
+    return render(request, "index.html", {"message": "Has cerrado la sesión!"})
 
 #CRUD Teacher
 def create_teacher(request):

@@ -47,11 +47,20 @@
                         <a href="#class" class="nav-link smoothScroll">Classes</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#schedule" class="nav-link smoothScroll">Schedules</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{% url 'About Me' %}" class="nav-link smoothScroll">About me</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link smoothScroll" href="{% url 'Cerrar Sesion' %}">Log Out</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link smoothScroll" href="{% url 'Registrarse' %}">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link smoothScroll" href="{% url 'Iniciar Sesion' %}">Log In</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <ul class="social-icon ml-lg-3">
                     <li><a href="https://www.facebook.com/gimnasio.sigmafitnessgym/?ref=page_internal" class="fa fa-facebook" target="_blank"></a></li>
