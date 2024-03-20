@@ -23,8 +23,11 @@ urlpatterns = [
     # Read
     path('readTeachers/', read_teacher, name="Read Teacher"),
     path('readClients/', read_client, name="Read Client"),
+    path('readPlaces/', read_place, name="Read Place"),
     # Update
     path('updateClients/<infoClient>/', update_client, name="Update Client"),
+    path('updatePlaces/<infoPlace>/', update_place, name="Update Place"),
     # Delete
     path('deleteClients/<infoClient>/', delete_client, name="Delete Client"),
+    path('deletePlaces/<infoPlace>/', delete_place, name="Delete Place"),
 ]

@@ -164,3 +164,36 @@ def create_place(request):
         forms= PlaceForm()
     
     return render(request, "places/createPlace.html", {"form": forms})
+
+def read_place(request):
+    places = Place.objects.all()
+    return render(request, "places/readPlace.html", {"places": places})
+
+@login_required
+def update_place(request, infoPlace):
+    place = Place.objects.get(id=infoPlace)
+    if request.method == "POST":
+        form = PlaceForm(request.POST)
+        if form.is_valid():
+            infoDic = form.cleaned_data
+            place.street = infoDic["street"]
+            place.number = infoDic["number"]
+            place.city = infoDic["city"]
+            place.province = infoDic["province"]
+            place.save()
+            return render(request, "index.html")
+    else:
+        form = PlaceForm(initial={
+            "street": place.street,
+            "number": place.number,
+            "city": place.city,
+            "province": place.province,
+        })
+
+    return render(request, "places/updatePlace.html", {"form": form})
+
+@login_required
+def delete_place(request, infoPlace):
+    place = Place.objects.get(id=infoPlace)
+    place.delete()
+    return render(request, "index.html")
