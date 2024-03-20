@@ -145,6 +145,37 @@ def create_activity(request):
     
     return render(request, "activities/createActivity.html", {"form": forms})
 
+def read_activity(request):
+    activities = Activity.objects.all()
+    return render(request, "activities/readActivity.html", {"activities": activities})
+
+@login_required
+def update_activity(request, infoActivity):
+    activity = Activity.objects.get(id=infoActivity)
+    if request.method == "POST":
+        form = ActivityForm(request.POST)
+        if form.is_valid():
+            infoDic = form.cleaned_data
+            activity.name = infoDic["name"]
+            activity.day = infoDic["day"]
+            activity.hour = infoDic["hour"]
+            activity.save()
+            return render(request, "index.html")
+    else:
+        form = ActivityForm(initial={
+            "name": activity.name,
+            "day": activity.day,
+            "hour": activity.hour,
+        })
+
+    return render(request, "activities/updateActivity.html", {"form": form})
+
+@login_required
+def delete_activity(request, infoActivity):
+    activity = Activity.objects.get(id=infoActivity)
+    activity.delete()
+    return render(request, "index.html")
+
 #CRUD Place
 @login_required
 def create_place(request):

@@ -18,16 +18,19 @@ urlpatterns = [
     # Create
     path('createTeachers/', create_teacher, name="Create Teacher"),
     path('createClients/', create_client, name="Create Client"),
-    path('createActivities/', create_activity, name="Create Activities"),
+    path('createActivities/', create_activity, name="Create Activity"),
     path('createPlaces/', create_place, name="Create Place"),
     # Read
     path('readTeachers/', read_teacher, name="Read Teacher"),
     path('readClients/', read_client, name="Read Client"),
+    path('readActivities/', read_activity, name="Read Activity"),
     path('readPlaces/', read_place, name="Read Place"),
     # Update
     path('updateClients/<infoClient>/', update_client, name="Update Client"),
+    path('updateActivities/<infoActivity>/', update_activity, name="Update Activity"),
     path('updatePlaces/<infoPlace>/', update_place, name="Update Place"),
     # Delete
     path('deleteClients/<infoClient>/', delete_client, name="Delete Client"),
+    path('deleteActivities/<infoActivity>/', delete_activity, name="Delete Activity"),
     path('deletePlaces/<infoPlace>/', delete_place, name="Delete Place"),
 ]
