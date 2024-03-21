@@ -10,6 +10,7 @@ urlpatterns = [
     path('index/', index, name="Home"),
     # Pages
     path('aboutMe/', aboutMe, name="About Me"),
+    path('aboutUs', aboutUs, name="About Us"),
     path('404/', views.error_404, name='error_404'),
     # User Autenticado
     path('signup/', register_user, name="Registrarse"),
@@ -26,10 +27,12 @@ urlpatterns = [
     path('readActivities/', read_activity, name="Read Activity"),
     path('readPlaces/', read_place, name="Read Place"),
     # Update
+    path('updateTeachers/<infoTeacher>/', update_teacher, name="Update Teacher"),
     path('updateClients/<infoClient>/', update_client, name="Update Client"),
     path('updateActivities/<infoActivity>/', update_activity, name="Update Activity"),
     path('updatePlaces/<infoPlace>/', update_place, name="Update Place"),
     # Delete
+    path('deleteTeachers/<infoTeacher>/', delete_teacher, name="Delete Teacher"),
     path('deleteClients/<infoClient>/', delete_client, name="Delete Client"),
     path('deleteActivities/<infoActivity>/', delete_activity, name="Delete Activity"),
     path('deletePlaces/<infoPlace>/', delete_place, name="Delete Place"),

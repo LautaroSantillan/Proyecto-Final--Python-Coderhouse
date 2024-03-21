@@ -1,9 +1,5 @@
 {% extends "father.html" %}
 
-{% block title %}
-    SIGMA FITNESS GYM
-{% endblock %}
-
 {% block section %}
 <!-- HERO -->
     <section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
@@ -20,7 +16,7 @@
                         <h6 data-aos="fade-up" data-aos-delay="300">Una nueva forma de construir un estilo de vida saludable!</h6>
                         <h1 class="text-white" data-aos="fade-up" data-aos-delay="500">Mejora tu cuerpo en Sigma Fitness Gym</h1>
                         <a href="#location" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">Ubicación</a>
-                        <a href="{% url 'Read Teacher' %}" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">Leer más</a>    
+                        <a href="{% url 'About Us' %}" class="btn custom-btn bordered mt-3" data-aos="fade-up" data-aos-delay="700">Leer más</a>    
                     </div>
                 </div>
             </div>
@@ -55,13 +51,13 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <h3 class="mb-4 text-white" data-aos="fade-up">Visite nuestros otros apartados:</h3>
-                    <ul class="list-unstyled">
+                    <ul class="list-unstyled" style="margin-bottom: 30px;">
                         <li><a href="{% url 'Read Client' %}" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300">CLIENTES</a></li>
-                        <li><a href="#" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300">PROFESORES</a></li>
+                        <li><a href="{% url 'Read Teacher' %}" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300">PROFESORES</a></li>
                         <li><a href="{% url 'Read Activity' %}" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300">ACTIVIDADES</a></li>
                         <li><a href="{% url 'Read Place' %}" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300">ESTABLECIMIENTOS</a></li>
                     </ul>
-                </div>
+                </div>                
             </div>
         </div>
     </section>

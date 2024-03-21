@@ -15,8 +15,11 @@ def index(request):
 def aboutMe(request):
     return render(request, "aboutMe.html")
 
+def aboutUs(request):
+    return render(request, "aboutUs.html")
+
 def error_404(request, exception):
-    return render(request, 'error404.html', status=404)
+    return render(request, "error404.html", status=404)
 
 # User Autenticado
 def register_user(request):
@@ -73,7 +76,36 @@ def create_teacher(request):
 def read_teacher(request):
     teachers = Teacher.objects.all()
     return render(request, "teachers/readTeacher.html", {"teachers": teachers})
-    
+
+@login_required    
+def update_teacher(request, infoTeacher):
+    teacher = Teacher.objects.get(id=infoTeacher)
+    if request.method == "POST":
+        form = TeacherForm(request.POST)
+        if form.is_valid():
+            infoDic = form.cleaned_data
+            teacher.name = infoDic["name"]
+            teacher.lastname = infoDic["lastname"]
+            teacher.email = infoDic["email"]
+            teacher.role = infoDic["role"]
+            teacher.save()
+            return render(request, "index.html")
+    else:
+        form = TeacherForm(initial={
+            "name": teacher.name,
+            "lastname": teacher.lastname,
+            "email": teacher.email,
+            "role": teacher.role,
+        })
+
+    return render(request, "teachers/updateTeacher.html", {"form": form})
+
+@login_required
+def delete_teacher(request, infoTeacher):
+    teacher = Teacher.objects.get(id=infoTeacher)
+    teacher.delete()
+    return render(request, "index.html")
+
 #CRUD Client
 def create_client(request):
     if request.method == "POST":

@@ -28,8 +28,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{% url 'Home' %}">
-                {% block title %}
-                {% endblock %}
+                SIGMA FITNESS GYM
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -39,9 +38,6 @@
                 <ul class="navbar-nav ml-lg-auto">
                     <li class="nav-item">
                         <a href="{% url 'Home' %}" class="nav-link smoothScroll">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'Read Teacher' %}" class="nav-link smoothScroll">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a href="#class" class="nav-link smoothScroll">Classes</a>
