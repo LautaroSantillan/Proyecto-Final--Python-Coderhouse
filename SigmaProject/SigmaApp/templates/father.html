@@ -47,6 +47,12 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
+                        <a class="nav-link smoothScroll" id="nav-name" style="color: white;">Hi {{user.first_name}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link smoothScroll" href="{% url 'Actualizar Usuario' %}">Update User</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link smoothScroll" href="{% url 'Cerrar Sesion' %}">Log Out</a>
                     </li>
                     {% else %}
@@ -265,6 +271,12 @@
         </div>
     </footer>
     <!-- SCRIPTS -->
+    <script>
+        setTimeout(() => {
+            const navNameElement = document.getElementById("nav-name");
+            navNameElement.parentNode.removeChild(navNameElement);
+        }, 5000);
+    </script>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/aos.js' %}"></script>

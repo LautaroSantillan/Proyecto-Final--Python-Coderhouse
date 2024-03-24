@@ -24,14 +24,36 @@ def error_404(request, exception):
 # User Autenticado
 def register_user(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = userRegister(request.POST)
         if form.is_valid():
             form.save()
             return render(request, "index.html", {"message": "El usuario ha sido creado exitosamente!"})
     else:
-        form = UserCreationForm()
+        form = userRegister()
 
     return render(request, "account-signin/register.html", {"form": form})
+
+@login_required
+def update_user(request):
+    user = request.user
+    if request.method == "POST":
+        form = userUpdate(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            user.email = info["email"]
+            user.set_password = info["password1"]
+            user.first_name = info["first_name"]
+            user.last_name = info["last_name"]
+            user.save()
+            return render(request, "index.html")
+    else:
+        form = userUpdate(initial={
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+        })
+    
+    return render(request, "account-signin/update.html", {"form": form})
 
 def login_user(request):
     if request.method == "POST":
@@ -117,6 +139,7 @@ def create_client(request):
                 lastname=infoDic["lastname"],
                 email=infoDic["email"],
                 age=infoDic["age"],
+                birthday=infoDic["birthday"],
             )
             client.save()
             return render(request, "index.html")                      
@@ -140,6 +163,7 @@ def update_client(request, infoClient):
             client.lastname = infoDic["lastname"]
             client.email = infoDic["email"]
             client.age = infoDic["age"]
+            client.birthday = infoDic["birthday"]
             client.save()
             return render(request, "index.html")
     else:
@@ -148,6 +172,7 @@ def update_client(request, infoClient):
             "lastname": client.lastname,
             "email": client.email,
             "age": client.age,
+            "birthday": client.birthday,
         })
 
     return render(request, "clients/updateClient.html", {"form": form})

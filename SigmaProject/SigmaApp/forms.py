@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 # Create your forms here.
 class TeacherForm(forms.Form):
     name = forms.CharField(max_length=40)
@@ -11,6 +13,7 @@ class ClientForm(forms.Form):
     lastname = forms.CharField(max_length=50)
     email = forms.EmailField()
     age = forms.IntegerField()
+    birthday = forms.DateField()
     
 class ActivityForm(forms.Form):
     name = forms.CharField(max_length=40)
@@ -22,3 +25,21 @@ class PlaceForm(forms.Form):
     number = forms.IntegerField()
     city = forms.CharField(max_length=50)
     province = forms.CharField(max_length=50)
+
+class userRegister(UserCreationForm):
+    email = forms.EmailField()
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Ingrese nuevamente la contraseña", widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ["username", "first_name", "last_name", "email", "password1", "password2"]
+
+class userUpdate(UserCreationForm):
+    email = forms.EmailField()
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Ingrese nuevamente la contraseña", widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ["first_name", "last_name", "email", "password1", "password2"]

@@ -8,11 +8,11 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="fw-normal text-center mb-4">SIGN UP</h2>
+                        <h2 class="fw-normal text-center mb-4">Actualizar al usuario {{user.first_name}}</h2>
                         <form action="" method="post">
                             {% csrf_token %}
                             {{ form }}
-                            <button type="submit" class="btn btn-primary d-block mx-auto">Registrarse</button>
+                            <button type="submit" class="btn btn-primary d-block mx-auto">Guardar Cambios</button>
                         </form>
                     </div>
                 </div>

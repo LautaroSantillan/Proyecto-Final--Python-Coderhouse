@@ -14,8 +14,9 @@ urlpatterns = [
     path('404/', views.error_404, name='error_404'),
     # User Autenticado
     path('signup/', register_user, name="Registrarse"),
-    path("login/", login_user, name="Iniciar Sesion"),
-    path("logout/", logout_user, name="Cerrar Sesion"),
+    path('login/', login_user, name="Iniciar Sesion"),
+    path('update/', views.update_user, name="Actualizar Usuario"),
+    path('logout/', logout_user, name="Cerrar Sesion"),
     # Create
     path('createTeachers/', create_teacher, name="Create Teacher"),
     path('createClients/', create_client, name="Create Client"),
