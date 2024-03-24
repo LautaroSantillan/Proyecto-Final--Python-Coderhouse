@@ -16,6 +16,7 @@ urlpatterns = [
     path('signup/', register_user, name="Registrarse"),
     path('login/', login_user, name="Iniciar Sesion"),
     path('update/', views.update_user, name="Actualizar Usuario"),
+    path('addAvatar/', add_avatar, name="Agregar Avatar"),
     path('logout/', logout_user, name="Cerrar Sesion"),
     # Create
     path('createTeachers/', create_teacher, name="Create Teacher"),

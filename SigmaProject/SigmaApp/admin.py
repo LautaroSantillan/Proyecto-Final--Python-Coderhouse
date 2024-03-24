@@ -5,4 +5,6 @@ admin.site.register(Teacher)
 admin.site.register(Client)
 admin.site.register(Activity)
 admin.site.register(Place)
-# lautaro --- 9854120
+admin.site.register(Avatar)
+# lautaro --- Python88
+# Lautaro --- Lolita10

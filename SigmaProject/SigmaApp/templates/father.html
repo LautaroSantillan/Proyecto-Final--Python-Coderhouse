@@ -40,17 +40,20 @@
                         <a href="{% url 'Home' %}" class="nav-link smoothScroll">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#class" class="nav-link smoothScroll">Classes</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{% url 'About Me' %}" class="nav-link smoothScroll">About me</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link smoothScroll" id="nav-name" style="color: white;">Hi {{user.first_name}}</a>
+                    <li class="nav-item row" id="nav-user" style="align-items: center;">
+                        <a class="nav-link smoothScroll" style="color: white;">Hi {{user.first_name}}</a>
+                        {% if request.user.avatar %}
+                        <img src="{{request.user.avatar.img.url}}" alt="userAvatar" style="max-width: 36px;">
+                        {% endif %}
                     </li>
                     <li class="nav-item">
                         <a class="nav-link smoothScroll" href="{% url 'Actualizar Usuario' %}">Update User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link smoothScroll" href="{% url 'Agregar Avatar' %}">Avatar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link smoothScroll" href="{% url 'Cerrar Sesion' %}">Log Out</a>
@@ -273,9 +276,9 @@
     <!-- SCRIPTS -->
     <script>
         setTimeout(() => {
-            const navNameElement = document.getElementById("nav-name");
+            const navNameElement = document.getElementById("nav-user");
             navNameElement.parentNode.removeChild(navNameElement);
-        }, 5000);
+        }, 1500);
     </script>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>

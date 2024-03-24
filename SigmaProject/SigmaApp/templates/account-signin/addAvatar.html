@@ -8,16 +8,15 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="fw-normal text-center mb-4">LOG IN</h2>
-                        <form action="" method="post">
+                        <h2 class="fw-normal text-center mb-4">Agregar avatar al usuario {{user.first_name}}</h2>
+                        <form action="" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form }}
-                            <button type="submit" class="btn btn-primary d-block mx-auto">Iniciar Sesión</button>
+                            <button type="submit" class="btn btn-primary d-block mx-auto">Agregar Avatar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
 {% endblock %}

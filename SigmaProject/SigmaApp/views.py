@@ -71,6 +71,20 @@ def login_user(request):
 
     return render(request, "account-signin/login.html", {"form": form})
 
+@login_required
+def add_avatar(request):
+    if request.method == "POST":
+        form = avatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            currentUser = User.objects.get(username=request.user)
+            avatar = Avatar(user=currentUser, img=form.cleaned_data["img"])
+            avatar.save()
+            return render(request, "index.html")
+    else: 
+        form = avatarForm()
+
+    return render(request, "account-signin/addAvatar.html", {"form": form})
+
 def logout_user(request):
     logout(request)
     return render(request, "index.html", {"message": "Has cerrado la sesión!"})

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from SigmaApp.models import Avatar
 # Create your forms here.
 class TeacherForm(forms.Form):
     name = forms.CharField(max_length=40)
@@ -43,3 +44,8 @@ class userUpdate(UserCreationForm):
     class Meta:
         model = User
         fields = ["first_name", "last_name", "email", "password1", "password2"]
+
+class avatarForm(forms.ModelForm):
+    class Meta:
+        model = Avatar
+        fields = ["img"]
