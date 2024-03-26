@@ -6,6 +6,9 @@ This README provides an overview of the SigmaApp project, a gym landing page man
 ## Objective
 The objective of SigmaApp is to provide a comprehensive platform for managing various aspects of a gym landing page. Users can create, read, update, and delete (CRUD) teachers, clients, activities, and places.
 
+## Demo on Youtube
+https://youtu.be/nvT7j0bTliU
+
 ## Models
 
 ### Teacher
